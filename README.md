@@ -9,7 +9,7 @@ Main demo goal: run a **Brainfuck Snake** program (bf16-compatible) and render o
 
 ## How it works
 
-### Rendering (RGB332, CLSSCREEN.CLASS)
+### Rendering (RGB332 → screen, CLSSCREEN.CLASS)
 - The screen is **256 “pixels”** (16×16).
 - Each pixel is a **clone object** that plays a palette animation:
   - 1 event, **256 frames**,
