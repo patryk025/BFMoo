@@ -31,6 +31,12 @@ SNAKE_BF_CODE:TYPE=STRING
 SNAKE_BF_CODE:VALUE=-[-[>+<-]>]>>>>+++[>++++++<-]>[>[>>>]+[<<<]++++[>++++<-]>[>>[>>>]+++[<<<]>-]>-]>[->>>-]+[>>>]+[-<<<-]+<--[--[<<<+>>>-]<<<]<<----<--[-----[>>>+<<<-]>>>]<<<<<<<<+[<<<]<+[<<<<<[-]>-[[<]<[-]>+[>]<-]+>+>>>>+>>>[-[<+>>>+<<-]+<[++[---[-[->[<<<]<[<]>+++[>----<-]<]>[[<<<]<[<]>-]<]>[[<<<]<[<]>>+++<-]<]>[[<<<]<[<]>>+++++<-]>+++++++[<<++++>>-]+[>]<[>>>]]+>>>[<<+>>-]>]<<<[<-<<]>>+>->--->++++++++[<+++<.[-]<<<+<,-[>--<-[<+>>+<--[<-->----[<+>[+]]]]]<[>++++>+<<-]>[>++++<-]>[>[-]<[>+<-]]>>>>>-]<<<<[>[<<+>>>+[->>>+]->+<[<<<]<-]>+[->>>+]+++[<++++++>-]++<[-[<<<+>>>-]<<<]>[<+<<]<<[<<+>>>>+<<-]>++++[>++++<-]>+[>>[>>>]+[<<<]>-]>>[->>>]+>---[-[[>>>]-[>+<-----]>+.<]<[->-[<<<]<<<+[+>>>>[<<+<<[+>]>>[-[<<->>-]>]>-]<<+[<<->>[>>>]+>---[+++>>+>---]+++[<<<]<-]+[->>>]<<+[<<<]<]-[>+<+++++++++]<[>>++.[-]]]>]<[->-[>>>]<<<[>[-[->]<+[<]<]<<<<]<<]]<[[[>>+<<-]<]>>]>>]
 SNAKE_BF_CODE:DESCRIPTION=(c) 2025 Daniel B. Cristofani. http://brainfuck.org/. This program is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (http://creativecommons.org/licenses/by-sa/4.0/). Source from https://brainfuck.org/snake_explained.b, intended use in bf16 emulator.
 
+OBJECT=TEST_BF_CODE
+TEST_BF_CODE:TYPE=STRING
+TEST_BF_CODE:VALUE=>>>+++++++++++++[<<<+++++>>+++++>-]<+.
+TEST_BF_CODE:DESCRIPTION=Just write letter A (65) to video memory at 0 and letter B (66) at 2. Nothing special.
+
 OBJECT=__INIT__
 __INIT__:TYPE=BEHAVIOUR
-__INIT__:CODE={CLSSCREENOBJ^NEW("BF_SCREEN");BF_SCREEN^DEBUG_COLOR_PALETTE();CLSBFOBJ^NEW("BF_INTERPRETER",SNAKE_BF_CODE);}
+#__INIT__:CODE={CLSBFOBJ^NEW("BF_INTERPRETER",SNAKE_BF_CODE);}
+__INIT__:CODE={CLSBFOBJ^NEW("BF_INTERPRETER",TEST_BF_CODE);}
