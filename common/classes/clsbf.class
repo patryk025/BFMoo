@@ -41,9 +41,13 @@ OBJECT=TMP_VALUE
 TMP_VALUE:TYPE=INTEGER
 TMP_VALUE:VALUE=0
 
+OBJECT=HEX_CHARS
+HEX_CHARS:TYPE=STRING
+HEX_CHARS:VALUE=0123456789ABCDEF
+
 OBJECT=DEC_TO_HEX
 DEC_TO_HEX:TYPE=BEHAVIOUR
-DEC_TO_HEX:CODE={@STRING("ANS","");@INT("N",$1);@IF("N","_","0","{ANS^SET("0");}","");@WHILE("N","!_","0","{@INT("REM",[N%16]);@IF("REM","<","10","{ANS^SET([""+REM+ANS^GET()]);}","");@IF("REM","_","10","{ANS^SET(["A"+ANS^GET()]);}","");@IF("REM","_","11","{ANS^SET(["B"+ANS^GET()]);}","");@IF("REM","_","12","{ANS^SET(["C"+ANS^GET()]);}","");@IF("REM","_","13","{ANS^SET(["D"+ANS^GET()]);}","");@IF("REM","_","14","{ANS^SET(["E"+ANS^GET()]);}","");@IF("REM","_","15","{ANS^SET(["F"+ANS^GET()]);}","");N^DIV(16);}");@IF("ANS^LENGTH()","_","1","{ANS^SET(["0"+ANS]);}","");@RETURN(ANS);}
+DEC_TO_HEX:CODE={@STRING("ANS","");@INT("N",$1);@IF("N","_","0","{ANS^SET("0");}","");@WHILE("N","!_","0","{@INT("REM",[N%16]);ANS^SET([HEX_CHARS^GET(REM)+ANS^GET()]);N^DIV(16);}");@IF("ANS^LENGTH()","_","1","{ANS^SET(["0"+ANS]);}","");@RETURN(ANS);}
 
 OBJECT=LOGS
 LOGS:TYPE=STRING
